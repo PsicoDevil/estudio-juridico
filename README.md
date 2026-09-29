@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# RAMOS & ASOCIADOS — demo conceptual
 
-## Getting Started
+Sitio editorial en Next.js para RAMOS & ASOCIADOS, Abogados. El área conocida es Derecho Laboral y el profesional principal es Antonio Ramos. Teléfono, dirección y matrícula son ficticios y no están verificados.
 
-First, run the development server:
+## Desarrollo y validación
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+En PowerShell con scripts deshabilitados, utilizar `npm.cmd`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contenido y componentes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `data/site.ts`: marca, contacto ficticio, texto del estudio, metodología, profesionales y áreas. Agregar profesionales al arreglo `professionals` sin inventar sus datos. Las reservas 02–04 en `futurePracticeAreas` no se muestran al público.
+- `components/ProfessionalPortrait.tsx`: retrato y datos profesionales reutilizables.
+- `components/Brand.tsx`, `Header.tsx`, `Reveal.tsx`, `ContactForm.tsx`: identidad, navegación adaptable, animaciones y formulario visual.
+- `app/page.tsx`, `app/globals.css`: composición editorial y estilos responsive.
+- `app/layout.tsx`, `app/icon.svg`, `app/robots.ts`: metadata, favicon y acceso de robots. La demo mantiene `noindex, nofollow`; se permite el rastreo para que los buscadores puedan leer esa directiva.
+- `public/images/antonio.png`: copia binariamente idéntica del retrato disponible en `public/antonio.png`. Sin edición ni filtros. Se muestra únicamente en Profesional. Cambiar la ruta en los datos para reemplazar la fotografía definitiva.
 
-## Learn More
+Los CTA abren el enlace conceptual de WhatsApp solicitado. El formulario sólo valida los campos y muestra una confirmación de prueba; no envía ni guarda datos.
 
-To learn more about Next.js, take a look at the following resources:
+## Pendiente para publicación
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Confirmar teléfono, domicilio, matrícula y jurisdicción, textos y alcance de la práctica, biografía y fotografía definitiva. Completar los datos del eventual segundo profesional y otras áreas únicamente cuando estén disponibles. Definir destino real del formulario y tratamiento de datos. Configurar el dominio definitivo antes de agregar canonical, URLs absolutas de Open Graph y sitemap, y retirar noindex sólo al aprobar el contenido real.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+El logo original `public/ramos.png` se integra mediante `Brand` en el header, El Estudio y el footer. El hero utiliza composición tipográfica sin retrato.
